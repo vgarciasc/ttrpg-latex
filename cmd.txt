@@ -1,0 +1,1 @@
+pandoc "abh1.md" -o "abh1.pdf" --template=../pandoc-latex-template_black1.tex --pdf-engine xelatex --lua-filter=../pandoc-latex.lua

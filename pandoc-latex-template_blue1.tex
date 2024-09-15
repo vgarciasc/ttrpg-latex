@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+
+% fix for pandoc 2.11
+\def\tightlist{}
+
+% fix image size
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+% remove section numbering
+\setcounter{secnumdepth}{0}
+
+% set font
+\usepackage[T1]{fontenc}
+\usepackage{CrimsonPro}
+
+\usepackage{enumitem}
+\setlist{noitemsep}
+\setlist[itemize]{leftmargin=*}
+
+% set sections and subsections
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\defaultfontfeatures{Ligatures=TeX}
+\definecolor{MSBlue}{rgb}{.204,.353,.541}
+\definecolor{MSLightBlue}{rgb}{.31,.506,.741}
+\newfontfamily\subsubsectionfont[Color=MSLightBlue]{Times New Roman}
+\titleformat*{\section}{\Large\bfseries\sffamily\color{MSBlue}}
+\titleformat*{\subsection}{\large\bfseries\sffamily\color{MSLightBlue}}
+\titleformat*{\subsubsection}{\itshape\subsubsectionfont}
+
+% \newtcolorbox{subsectitlebox}{colback=MSLightBlue, coltext=white, boxrule=0pt, arc=0pt, left=0mm, right=0mm, top=0mm, bottom=0mm}
+% \titleformat{\subsection}[block]
+%   {\large\bfseries\sffamily}
+%   {}
+%   {0pt}
+%   {\begin{subsectitlebox}}
+%   [\end{subsectitlebox}]
+
+\titleformat{name=\subsection}[block]
+  {\sffamily\large}
+  {}
+  {0pt}
+  {\colorsubsection}
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+\newcommand{\colorsubsection}[1]{%
+  \colorbox{MSLightBlue}{\parbox{\dimexpr0.5\textwidth-2\fboxsep}{\color{white} #1}}}
+
+% set page size and margins
+\usepackage[a5paper, total={3in, 3in}, margin=0.75cm, bmargin=1.5cm]{geometry}
+% \usepackage[a4paper, total={6in, 4in}, margin=1cm, bmargin=1.5cm]{geometry}
+
+% set separation between the two columns
+\setlength{\columnsep}{0.75cm}
+
+% line break before every section
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
+\newtcolorbox{monsterbox}{
+  colback=white!90!black, % background color
+  colframe=white!60!black, % border color
+  fonttitle=\bfseries,
+  title=Enemy
+}
+
+\usepackage{framed}
+\let\oldquote=\quote
+\let\endoldquote=\endquote
+\colorlet{shadecolor}{blue!10}
+\renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+
+\begin{document}
+\sloppy
+\twocolumn
+
+\title{$title$}
+
+$body$
+
+\end{document}
